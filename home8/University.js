@@ -16,22 +16,29 @@ class University {
     }
 
     removeMember(person){
-        if (this.teachers.includes(person)){
-            this.teachers = this.teachers.filter((_ ,index ) => index !== this.teachers.indexOf(person))
-        }else if (this.students.includes(person)){
-            this.students = this.students.filter((_ ,index ) => index !== this.students.indexOf(person))
-        }else {
-            console.error("No person was found in our database with that data")
-        }
 
+        const studentIndex = this.students.indexOf(person)
+        if (studentIndex !== -1){
+            this.students.splice(studentIndex, 1)
+            return
+        }
+        const teacherIndex = this.teachers.indexOf(person)
+        if (teacherIndex !== -1){
+            this.students.splice(teacherIndex, 1)
+            return
+        }
     }
     
     startLesson(){
         for (const student of this.students){
-            student.energy -= 2
+            if (student.energy >= 2){
+                student.energy -= 2
+            }     
         } 
         for (const teacher of this.teachers){
-            teacher.energy -= 5
+            if (teacher.energy >= 2){
+                teacher.energy -= 5
+            }
         } 
 
     }
@@ -47,7 +54,7 @@ class UniversityMember {
     }
 
     info() {
-        return `name : ${this.name} age : ${this.age} role : ${this.role} energy : ${this.energy}`
+        return `name: ${this.name}, age: ${this.age}, role: ${this.role}, energy: ${this.energy}`
     }
 
 }
