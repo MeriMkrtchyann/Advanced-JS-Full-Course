@@ -7,7 +7,7 @@ class Account {
         if (typeof name === 'string'){
             this.name = name
         }else {
-            
+
         }
         this.balance = balance
         this.#id = Account.generateUniqueId()
@@ -69,15 +69,7 @@ class Account {
     static identifyAccounts (account1 ,account2 ){
         return account1.#id === account2.#id
     }
-
-    submitBalance(password){
-        if (password === "hello"){
-            console.log(this.balance)
-        } else {
-            console.log("enter the correct password")
-        }
-    }
-}``
+}
 
 const saving = new Account("saving", 1000);
 const current = new Account("current", 8000);
@@ -91,5 +83,5 @@ const res = Account.identifyAccounts(current ,saving);
 console.log(res)
 
 saving.balance = "hello";
-saving.submitBalance("hello");
+
 console.log(saving);
