@@ -4,7 +4,11 @@ class Account {
     #id
     
     constructor ( name , balance){
-        this.name = name
+        if (typeof name === 'string'){
+            this.name = name
+        }else {
+            
+        }
         this.balance = balance
         this.#id = Account.generateUniqueId()
     }
@@ -13,16 +17,16 @@ class Account {
         return this.#balance
     }
 
-    set balance(nowbalance){
-        if (typeof nowbalance === 'number' && nowbalance > 0){
-            this.#balance = nowbalance
+    set balance(nowBalance){
+        if (typeof nowBalance === 'number' && nowBalance >= 0){
+            this.#balance = nowBalance
         }else{
             console.log("Please enter positive number only")
         }
     }
 
     credit (value){
-        if (typeof nowbalance === 'number' && nowbalance > 0){
+        if (typeof value === 'number' && value > 0){
             this.balance += value
         } else {
             console.log("Please enter positive number only")
@@ -31,7 +35,7 @@ class Account {
     }
 
     debit (value){
-        if (typeof nowbalance === 'number' &&  value > 0){
+        if (typeof value === 'number' &&  value > 0){
            if (this.balance >= value){
                 this.balance -= value
            }else {
@@ -49,7 +53,7 @@ class Account {
                 this.balance -= amount
                 acaunt.credit(amount)
             } else {
-                conseol.log ("insufficient funds")
+                console.log ("insufficient funds")
             }
         }else {
             console.log("Please enter positive number only")
@@ -73,14 +77,14 @@ class Account {
             console.log("enter the correct password")
         }
     }
-}
+}``
 
 const saving = new Account("saving", 1000);
 const current = new Account("current", 8000);
-console.log(saving.credit(5000));
-console.log(saving.debit(7000));
-console.log(saving.debit(2000));
-console.log(saving.transferTo(current, 1000));
+saving.credit(5000);
+saving.debit(1000);
+saving.debit(2000);
+saving.transferTo(current, 1000);
 console.log(saving.balance);
 console.log(current.balance);
 const res = Account.identifyAccounts(current ,saving);
@@ -89,7 +93,3 @@ console.log(res)
 saving.balance = "hello";
 saving.submitBalance("hello");
 console.log(saving);
-
-
-
-
