@@ -10,14 +10,18 @@ class Jungle{
         }
     }
 
-    soundOff(animal){
-       //
+    soundOff(){
+        for (let animal of this.animals){
+            animal.sound();
+            console.log(`${animal.constructor.name} my energy is ${animal.energy}`)
+        }
+       
     } 
 }
 
 class Animal {
 
-    energy = 0
+    energy = 10
 
     sound(){
         if (this.energy >= 3){
@@ -119,7 +123,7 @@ tiger.eat(grain)
 tiger.eat(fish)
 monkey.play()
 monkey.sound()
-//jungle.soundOff(fish)
+jungle.soundOff()
 
 
 
