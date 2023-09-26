@@ -1,10 +1,7 @@
 function monthsInterval (date1 , date2){
 
-    let arrMonth = ["Jenuary" , 
-                    "Febuary" , "Mar" , "Apr", 
-                    "May", "Jun", "Jul", "Aug", 
-                    "Sep", "Oct", "Nov",
-                    "December"]
+    let arrMonth = ["Jenuary" , "Febuary" , "Mar" , "Apr", "May", 
+                    "Jun", "Jul", "Aug", "Sep", "Oct", "Nov","December"]
 
     let nowArrMonths = []
 
