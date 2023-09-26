@@ -5,6 +5,7 @@ function dayOfYear(date){
     let year = myDate.getFullYear()
 
     let lastYearLastDay = new Date("12/31/" + (year - 1))
+
     let mayDay = myDate.getTime()
 
     let defferents = mayDay - lastYearLastDay.getTime() 
@@ -14,4 +15,4 @@ function dayOfYear(date){
     return ( defferents )
 }
 
-console.log(dayOfYear("12/13/2020"))// 348
+console.log(dayOfYear("12/13/2020"))
