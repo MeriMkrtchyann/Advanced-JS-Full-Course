@@ -3,9 +3,8 @@ function setTimeout(callBack , milliseconds){
 
     let time = Date.now()
 
-    while(Date.now() - time <= milliseconds){
-        
-    }    
+    while(Date.now() - time <= milliseconds){ }  
+
     return callBack()
 }
 
