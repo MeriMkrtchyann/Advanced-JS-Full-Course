@@ -13,30 +13,33 @@ class LinkedList {
         this.size = 0
     }
 
-    append(nowData){ //verjic avelacnuma
+    append(data){ //verjic avelacnuma
 
-       
+        const newNode = new Node(data)
+
         if (!this.head){
-            this.head = nowData
+            this.head = newNode
         }else{
             let currentNode = this.head
-
             while (currentNode.next){
                 currentNode = currentNode.next
             }
 
-            currentNode.next = nowData
+            currentNode.next = newNode
         }
         this.size++  
         return this
     } 
 
-    prepend(nowData){//demica avelacnuma
+    prepend(data){
+
+        const newNode = new Node(data)
+
         if (!this.head){
-            this.head = nowData
+            this.head = newNode
         }else {
             let currentNode = this.head
-            this.head = nowData
+            this.head = newNode
             this.head.next = currentNode
         }
 
@@ -44,7 +47,9 @@ class LinkedList {
         return this
     } 
 
-    insert(nowData, index){//xckuma
+    insert(data, index){
+
+        const newNode = new Node(data)
 
         let counter = 0
 
@@ -53,12 +58,12 @@ class LinkedList {
         }
 
         if (index === this.size) {
-            this.append(nowData)
+            this.append(data)
             return this
         }
 
         if (index === 0){
-            this.prepend(nowData)
+            this.prepend(date)
             return this
         }
 
@@ -70,8 +75,8 @@ class LinkedList {
         }
 
         let oldcurrentNode = currentNode.next
-        currentNode.next = nowData
-        currentNode.next.next = oldcurrentNode
+        currentNode.next = newDota
+        newDota.next = oldcurrentNode
 
         this.size++
 
@@ -79,21 +84,29 @@ class LinkedList {
     } 
 
 
-    remove(nowData){//jnjuma tvyal value
+    remove(data){
+
+        if (!this.size){
+            return this
+        }
+
+        if (this.head.data === data){
+            this.head = this.head.next
+            this.size--
+            return this
+        }
 
         let currentNode = this.head
-
-        while (currentNode.next.data !== nowData){
+        while (currentNode.next.data !== data){
             currentNode = currentNode.next
         }
 
         currentNode.next = currentNode.next.next
         this.size--
-
         return this
     }
 
-    removeAt(index){//jnjuma indexsi taki nstacy
+    removeAt(index){
 
         if (index === 0){
             this.head = this.head.next
@@ -115,27 +128,23 @@ class LinkedList {
 
     }  
 
-    getSize(){//veradracnuma size
+    getSize(){
         return this.size
     }
 
-    isEmpty(){//true kam false
-        if (this.size){
-            return false;
-        }
-        return true;
+    isEmpty(){
+        return this.size === 0
     }
     
-    printList(){//tpuma
-
+    printList(){
         
         let text = ""
         let counter = 0
 
         let currentNode = this.head
 
-        while (counter !== this.size - 1 ){
-            text += currentNode["data"] + " "
+        while (counter !== this.size  ){
+            text += currentNode.data + " "
             currentNode = currentNode.next
             counter++
         }
@@ -146,18 +155,14 @@ class LinkedList {
 
 
 const list = new LinkedList(); 
-const node1 = new Node(1);
-const node2 = new Node(2);
-const node3 = new Node(3);
-const node0 = new Node(0);
-const node4 = new Node(4);
-list.append(node1); 
-list.append(node2); 
-list.append(node3); 
 
-list.prepend(node0); 
+list.append(1); 
+list.append(2); 
+list.append(3); 
 
-list.insert(node4, 4);
+list.prepend(0); 
+
+list.insert(4, 4);
 
 list.printList(); 
 
