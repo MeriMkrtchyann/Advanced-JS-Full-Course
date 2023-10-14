@@ -1,7 +1,6 @@
 function removeDuplicates(arr){
 
-    const nowArr = new Set (arr)
-    return nowArr
+    return [...new Set (arr)]
 
 }
 
