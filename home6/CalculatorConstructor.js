@@ -23,7 +23,6 @@ Calculator.prototype.divide = function(num1 , num2){
     return num1 / num2
 }
 
-
 const calculator = new Calculator()
 
 console.log(calculator.add(10, 5))
