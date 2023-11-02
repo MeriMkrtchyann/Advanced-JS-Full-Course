@@ -1,24 +1,10 @@
-/*
-Add: Pushes the passed-through song to the songs array
-Play: Plays current song based on array index
-Stop: Holds place in array, but calls above stop song prototype function
-Next: Sets the next song in the songs array, calling the above play prototype function
-Song should take in two arguments, title and artist, which should both be added as properties when
-the Song constructor function is used.
-Play: Sets the song as playing using isPlaying
-Stop: Sets the song as not playing (isPlaying = false)
-*/
-
 function Playlist () {
-
     this.songArray = []
     this.index = 0
-    this.isPlaying
-
+    this.isPlaying = false
 }
 
 function Song (title , artist){
-
     this.title = title
     this.artist = artist
 }
@@ -29,9 +15,7 @@ Playlist.prototype.add = function (song){
 
 Playlist.prototype.play = function (){
     if (this.isPlaying) {
-        this.isPlaying = true
         return `${this.songArray[this.index] } started`
-        
     } 
     this.isPlaying = true
     return `${this.songArray[this.index] } started to play`
@@ -42,11 +26,13 @@ Playlist.prototype.stop = function (){
 }
 
 Playlist.prototype.next = function (){
+    let old = this.songArray[this.index]
     if (this.index === this.songArray.length - 1){
         this.index = 0
-        return
+    }else {
+        this.index++
     }
-        this.index++        
+    return `Hey ${old} stopped, ${this.songArray[this.index]} started`
 }
 
 const playlist = new Playlist();
@@ -58,9 +44,9 @@ playlist.add(heyJude);
 
 playlist.add(jaded);
 
-playlist.play(); // Hey Jude started to play
-playlist.next(); // Hey Jude stopped, Jaded started
-playlist.next(); // Jaded stopped, Hey Jude started
-playlist.stop(); // Hey Jude stopped
-playlist.play(); // Hey Jude started
+console.log(playlist.play()); // Hey Jude started to play
+console.log(playlist.next()); // Hey Jude stopped, Jaded started
+console.log(playlist.next()); // Jaded stopped, Hey Jude started
+console.log(playlist.stop()); // Hey Jude stopped
+console.log(playlist.play()); // Hey Jude started
 
