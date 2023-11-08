@@ -23,15 +23,12 @@
                 <a href=""><img src ="contact.jpg" alt ="icon" width="50" ></a>
             </div>
         </nav>
-        <hr>
         <header>
             <img src="sushiBack.jpg" alt ="sushi" width="100%">
         </header>
-        <hr>
         <main>
             <section>
                 <div class="filter">
-                    <label for="filter"></label>
                     <select name="filter" id="filter">
                         <option value="filter">Filter</option>
                         <option value="hotDishes">Hot dishes</option>
@@ -68,25 +65,21 @@
                     <div class="div6_2">about this product</div>
                 </div>
             </section>
-            <br>
-            <br>
             <section>
                 <form action="1.php">
                     <label for="fName">First name</label>
-                        <input type="text" id="fName" name="fName" placeholder="First name">
+                        <input type="text" id="fName" name="fName" placeholder="First name" required>
                     <label for="sName">Second name</label>
-                        <input type="text" id="sName" name="sName" placeholder="Second name">
+                        <input type="text" id="sName" name="sName" placeholder="Second name" required>
                     <label for="mail">Email</label>
-                        <input type="email" id="email" name="email" placeholder="Email">
+                        <input type="email" id="email" name="email" placeholder="Email" required>
                     <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Password">
-                    <label for="text">Message</label>
-                        <input type="mess" id="mess" name="mess" placeholder="Message">
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                    <textarea name="message" id="message" rows="" cols=""> Message </textarea>
                     <button>Submit</button>
                 </form>
-            </form>
+            </section>
         </main>
-        <hr>
         <footer>
             <div class ="logo">
                 <img src="logo.png" width="100" alt ="logo">
@@ -94,7 +87,7 @@
             <div class ="ul1">
                 <ul>
                     <li>text</li>
-                    <li>text</li>
+                    <li>text</li> 
                     <li>text</li>
                     <li>text</li>
                     <li>text</li>
