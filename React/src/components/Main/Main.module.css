@@ -1,0 +1,45 @@
+
+.Main {
+    padding: 20px;
+    background-color: #f7f7f7;
+}
+
+.ConteynerProducts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.Product {
+    flex: 0 0 calc(25% - 20px);
+    margin: 10px;
+    box-sizing: border-box;
+    padding: 15px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+
+.AboutProduct {
+    text-align: center;
+}
+
+.AboutProduct img {
+    max-width: 100%;
+    height: auto;
+}
+
+.AboutProduct span {
+    display: block;
+    margin-top: 10px;
+}
+
+.ProductPrice {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ProductPrice span {
+    margin : 20px;
+    font-size: 25px;
+}
