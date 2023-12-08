@@ -1,46 +1,48 @@
+import React, { useEffect, useState } from "react";
 import style from "../../Main.module.css";
-import { useEffect, useState } from "react";
 import Button from "./Button/Button";
 
 export default function ProductsArray() {
+    
+  const [products, setProduct] = useState([]);
+  const [basketProducts , setBasketProducts] = useState([]);
 
-    const [products, setProduct] = useState([]);
-    const [basket, setBasket] = useState([]);
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products/')
+      .then(res => res.json())
+      .then(json => setProduct(json))
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
 
-    useEffect(() => {
-        fetch('https://fakestoreapi.com/products/')
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(`HTTP error! Status: ${res.status}`);
-                }
-                return res.json();
-            })
-            .then(json => setProduct(json))
-            .catch(error => console.error('Error fetching data:', error));
-    }, []);
+  const addToBasket = (product) => {
+    try {
+      if (basketProducts.some((p) => p.id === product.id)) {
+        throw new Error("This product is already in the basket.");
+      }
+      setBasketProducts((prevSelected) => [...prevSelected, product]);
+      
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    const addToBasket = (product) => {
-        setBasket((prevBasket) => [...prevBasket, product]);
-    };
-
-    return (
-        <div className={style.ConteynerProducts}>
-            {products.map((product) => (
-                <div key={product.id} className={style.Product}>
-                    <div className={style.AboutProduct}>
-                        <img src={product.image} alt={product.title} />
-                        <span>{product.title}</span>
-                        <div className={style.ProductPrice}>
-                            <span> $ {product.price}</span>
-                            <Button
-                                product={product}
-                                addToBasket={addToBasket}
-                            />
-                        </div>
-                    </div>
-                </div>
-            ))}
+  return (
+    <div className={style.ConteynerProducts}>
+      {products.map((product) => (
+        <div key={product.id} className={style.Product}>
+          <div className={style.AboutProduct}>
+            <img src={product.image} alt={product.title} />
+            <span>{product.title}</span>
+            <div className={style.ProductPrice}>
+              <span> $ {product.price} </span>
+              <Button  addToBasket ={addToBasket} product={product}/>
+            </div>
+          </div>
         </div>
-    );
-
+      ))}
+    </div>
+  );
 }
+
+
+
